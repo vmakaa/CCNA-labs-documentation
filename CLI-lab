@@ -23,3 +23,10 @@
 
   10. Save the running configuration to the startup configuration
 
+##Topology  
+              PC1
+            /
+  R1 - SW1 - PC2
+            \
+              PC3
+
