@@ -30,3 +30,49 @@
             \
               PC3
 
+##Lab Setup
+Packet Tracer
+
+##Tasks Performed
+(1)-For task 1 I entered Router 1's CLI and used the following commands (same for switch)
+  -Router>en
+  -Router#conf t
+  -Router(config)#hostname R1
+(2)-For task 2, I entered Router 1(and switch 1)'s CLI and used the follwoing commands
+  -R1>en
+  -R1#conf t
+  -R1(config)#enable password CCNA
+(3)-For task 3 I used the exit command until I reached user exec mode and was successfully prompted with a password line to access privelleged exec mode
+(4)-For task 4, I viewed the password using the following commands
+  -R1>en
+  -R1#show running-config
+    -the output of this command shows the command I used to enable a password and the password itself, unencrypted
+(5)-For task 5, I used the follwoing commands to encrypt the password
+  -R1>en
+  -R1#conf t
+  -R1(config)#service password-encrypt
+  *-R1(config)#exit
+  *-R1#show running-config
+    -and with this command I was able to see the password I had used encrypted
+    (6)-Task 6 in thos case was completed using an additional 2 commands marked with an asterick
+(7)-For task 7, I had to enable a more secure password this time, and an encryption service more secure than password-encryption is 'secret'
+  -These are the commands I used
+    -R1>en
+    -R1#conf t
+    -R1(config)#enable secret Cisco
+    -R1(config)#exit
+    -R1#show running-config
+      -secret enabled password and regular encrypted password both shown
+(8)-For task 8, the secret password was required in order to gain access to privelleged exec mode
+(9)-Encryption type number 7 is used for enable password and encryption type number 5 was used for enable secret
+(10)-To accomplish this task I used the follwoing commands
+  -R1>en
+  -R1#write
+  
+  
+
+
+
+##Troubleshooting and Notes
+(1)-I used the '?' command to see the available commands in exec mode, privelaged exec mode, and in global configuration mode until I found the hostname command in global configuration mode.
+***NOTE- instead of exiting from global config each time just preceed your privelleged exec command while in global config with 'do'
