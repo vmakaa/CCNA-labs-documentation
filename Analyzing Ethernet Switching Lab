@@ -13,4 +13,12 @@
 
   5. Clear the dynamic MAC addresses from the MAC address table of each switch.
 
+##Topology
+
+    PC1            PC3
+      \            /
+PC2 -  SW1 --- SW2 - PC4
+
+##Lab Setup
+Packet Tracer
 
