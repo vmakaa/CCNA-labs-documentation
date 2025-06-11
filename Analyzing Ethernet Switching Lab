@@ -14,11 +14,32 @@
   5. Clear the dynamic MAC addresses from the MAC address table of each switch.
 
 ##Topology
+            192.168.1.0/24
 
-    PC1            PC3
+    PC1 .1           PC3 .3
       \            /
-PC2 -  SW1 --- SW2 - PC4
+PC2 .2 -  SW1 --- SW2 - PC4 .4
 
 ##Lab Setup
 Packet Tracer
 
+##Tasks Performed
+(1)First an ARP request will be broadcast to all devices on the network, then the device with the matching mac adderess will send an ARP reply to
+the PC that sent the ARP request, then once the ARP reply is recieved an echo request is sent by PC1 to PC3 and PC3 sends back an echo reply.
+  NOTE: in wireshark, ARP is explained like this:
+    Who has IP address 192.168.1.3? Tell 192.168.1.1.
+      Essentially what its doing is that its finding which mac adderess ahs that IP adderess
+(2)^^^
+(3)In the command prompt of each PC, I set them to ping a PC on the opposing switch (ex: PC1 -> PC3 etc.). One of the PCS still had to send
+an ARP request (PC1 -> PC4) whereas the others still had the mac adderesses in their table so they skipped the ARP request and went straight
+to the echo request. Due to this, it is safe to say the switches learned the PCs mac addresses.
+(4)On each switch, in order to identify the mac address of each PC I used the Cisco IOS command "show mac address-table"
+  NOTE: In order to use this command you must be in privelleged exec mode
+  PC1's mac address is 00d0.d3ad.9cab
+  PC2's mac address is 0060.5c56.14d3
+  PC3's mac address is 0004.9a6e.d870
+  PC4's mac address is 0001.647b.3119
+
+##Troubleshooting and notes
+Not much troubleshooting but I did play around with how short I can make the Cisco IOS command needed in this lab
+Router#show mac address-table can be shortened to Router#show mac a
