@@ -52,7 +52,9 @@ were starting from global configuration mode (conf t)
     R1#show running-config
 and then to save the current config use'
     R1#write
-(6)
+(6)To configure th IP addresses of the PCs, go to the config of each PC, click teh interface that PC is connected to from the config tab, then
+in IP configuration type it in.
+(7) To ping PC1 to PC2 and 3 you must go to the command prompt of PC1 and type "ping 'ip address'"
 
 
 
