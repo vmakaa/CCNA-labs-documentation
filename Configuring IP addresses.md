@@ -16,3 +16,44 @@
 7. Ping from PC1 to PC2 and PC3 to test connectivity
 
 ##Topology
+in seperate file
+
+##Lab Setup
+Packet Tracer
+
+##Tasks Performed
+(1)I changed the router's name from "Router" to "R1" using the following commands:
+    Router>en
+    Router#conf t
+    Router(config)#hostname R1
+(2)To view R1's interfaces, Ip addresses, etc. the following command was needed to be used in priveleged exec mode:
+    R1#show ip interface brief
+(3)In order to access the switch whose IP you want to hange you must use the command "R1(config)#interface gigabitethernet 'number/number'"
+    R1(config)#interface gigabitethernet 0/0
+    R1(config-if)#
+and then to set their Ip addresses you use the command
+    R1(config-if)#ip address 'ip address' 'subnet mask'
+        according to different IP addresses there will be different subnet masks
+            For example, an IP address with a prefix of /8 will have a subnet of 255.0.0.0
+then to add a description you do
+    R1(config-if)#description 'description'
+then since Cisco routers by default have the shutdown command active you need to do
+    R1(config-if)#no shutdown
+        NOTE: the shutdown command disables all functions on the specified interface
+then to address a different gigabit ethernet you dont need to exit you simply need to just type in the name of the interface as if you
+were starting from global configuration mode (conf t)
+    R1(config-if)#interface gigabitethernet 'code'
+        NOTE:R1(config-if)#int g0/2 for example is a shortcut you can use
+(4)then use the command 'show ip interface brief' to get an overview of all the interface's protocols(layer 2), statuses(layer 1), and ip
+    NOTE: status is layer 1 becuase it essentially shows if the cable of the respective interface to properly connected at the front and end
+    or if the cable is just shutdown alltogether
+            Protocol is layer 2 is asking "Is ethernet fuctioning properly on both devices ?"
+(5)To view the running config use the command
+    R1#show running-config
+and then to save the current config use'
+    R1#write
+(6)
+
+
+
+
