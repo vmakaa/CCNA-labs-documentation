@@ -21,4 +21,40 @@ Packet Tracer
   Router>en
   Router#conf t
   Router(config)#hostname R1
-(2)
+(2)In order to configure the IP address for the router, I went to global config mode in the router and used the command:
+    R1(config)#interface gigabitethernet 0/0
+    R1(config-if)#ip address 172.16.255.254 255.255.0.0
+For the PCS, I went into each PC's config tab then went to the ethernet they were connected to and respectively typed in their IP addresses.
+(3)the commands I used for this task were:
+    R1(config)#int g0/0
+    R1(config-if)#speed 1000
+    R1(config-if)#dup full
+    R1(config-if)#no shutdown (since all ports on a router are admin down by default)
+    Switch(config)#int range fa0/1-0/2
+    Switch(config-if-range)#speed 100
+    Switch(config-if-range)#duplex full
+    Switch(config-if-range)#ex
+    Switch(config-if)#int range g0/1-g0/2
+    Switch(config-if-range)#speed 1000
+    Switch(config-if-range)#duplex full
+
+(4)I used the range feature as shown above to label the interfaces that were connected to network devices respectively 
+(ex: SW1 to R1) and for the interfaces not in use I used not in use
+        NOTE: the command is SW1(config-if-range)#desc ##not in use## (or ##SW1 to R1## etc.)
+
+(5)For this task I used the command
+    Router(config)#int range Fa0/3 - Fa0/24
+    Router(config-if-range)#description ##Not in use##
+    Router(config-if-range)#shutdown
+
+
+##Troubleshooting and Notes
+>For 2 I had to look back on the configuring IP addresses lab
+>For 3 I had to google search the Cisco IOS commands for speed and duplex
+    NOTE: the commands are:
+        Router(config-ig)#speed 10|100|1000
+        Router(config-if)# duplex auto|full|half
+>NOTE: show interfaces status command is the one used to get a summary of all the connections
+>For 3 I had to lok in the video because I got confused about the speed
+>I was having trouble with gig 0/1 when i realized I hadnt properly set up the router
+    I didnt set the speed, duplex, and didnt properly do no shutdown on the port the interface was connected to
