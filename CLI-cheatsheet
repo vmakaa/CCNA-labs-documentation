@@ -1,0 +1,23 @@
+##Router
+>Router info from day 11 part 1: Routers neve flood packets like switches if they dont know where the packet goes, if a route is not in a router's routing table the router
+will drop the packet
+*show ip route 
+  -used to show a router's routing table
+  -L for local means the routes to actual ip address configured on router's interface (the .1s, .2s, etc) (/32 netmask)
+  -C for connected means the routes for the network the interface is connected to (the .0/24s etc.) (has a /24 netmask)
+    -ex. the connected route for 192.168.12.40/24 is 192.168.12.0/24 and the local route is 192.168.12.40/32 (/32 just means all bits are fixed)
+*no shutdown
+  -all of a router's interfaces are administrativly down (shutdown) as a default setting. In order to opne these interfaces for use you must set the ip address then
+use the no shutdown command
+  -upon using the no shutdown command to routes are automatically added to the routing table, a Connected route and a Local route
+
+
+
+##Router and Switch
+*show ip interface brief
+  -used to show a summary of the interfaces and their associated ip addresses as well as status (L1) and protocol (L2)
+*ip address xx.xxx.xx.x.x 0-255.0-255.0-255.0-255
+  -need to be in (config-if)
+  -used for setting an interface's ip address, but you also need to type in the correct subnet
+
+
