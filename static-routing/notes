@@ -9,3 +9,4 @@
 
 ##CLI commands
 -R1(config)#ip route "followed by the ip address, netmask, and then the nexthop" 
+ *next-hop is just the respective interface's ip address
