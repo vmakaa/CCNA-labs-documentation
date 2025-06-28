@@ -1,0 +1,8 @@
+##Definitions
+-Default Gateway (Router)
+  *also called default route
+  *it is a route that includes all possible ip addresses: 0.0.0.0/0
+  *This is the least specific route possible
+    *in routing, the router looks at its routing table and attempts to match the packets ip adderess with the most specific match it can find in its routing table
+  *In order for PCs to send packets outside of their local network (across routers) they first have to send their packet to the default gateway
+    -pcs learn the router's mac adderess via an ARP request
