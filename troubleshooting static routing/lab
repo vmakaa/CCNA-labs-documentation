@@ -1,0 +1,26 @@
+##Objectives
+PC1 and PC2 are unable to ping eachother.
+
+There is one misconfiguration on each router.
+
+Find and fix the misconfigurations.
+
+You have successfully completed the lab when PC1 and PC2 can ping eachother.
+
+##Topology
+in topology folder
+
+##Lab Setup
+Packet Tracer
+
+##Tasks performed
+(R1) I checked the routing table and noticed that the static route for R1 to get to R2 is incorrect
+in order to remove the incorrect version I used the following commands:
+  show running-config | include ip route
+  then i coped the configuration command
+  and pasted it with no in front of it
+(R2) I checked the routing table and realized that one of the interface exits used was incorrect so i opted to replace it for a next hop by removing the interface exit and addign a next hop
+(R3) One of the router's interfaces had the wrong ip address so i used the no command on the incorrect one and I fixed it with the correct ip address. I also noticed that
+it didnt have a static route so I added one using ip route ip address, subnet mask, and next hop.
+
+Finally I pinged PC2 from PC1 to verify I had fixed all the misconfigurations and the two pcs were able to communicate verifying that I had completed the task at hand.
