@@ -29,9 +29,9 @@ and the answer would be the router in the PC's LAN
 (2) To help with task 2 I am going to create a chart that will let me visualize the next hops needed
         ip destination       next hop
 R1    192.168.3.0/24      192.168.12.2/24     
-R2    192.168.1.0/24      
-R2    
-R3
+R2    192.168.1.0/24      192.168.12.1/24  
+R2    192.168.3.0/24      192.168.13.3/24
+R3    192.168.1.0/24      192.168.13.2/24
 
 
 
