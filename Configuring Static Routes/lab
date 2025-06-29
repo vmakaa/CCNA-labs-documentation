@@ -28,4 +28,10 @@ and the answer would be the router in the PC's LAN
 
 (2) 
 
+
+
+
+##Troubleshooting
+I noticed one of the interfaces was down marked by the red triangle and I realized I had forgot to set up the ip address and do no shutdown
+on one of the interfaces
     
