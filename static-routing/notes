@@ -1,6 +1,7 @@
 ##Definitions
 -Default Gateway (Router)
   *also called default route
+  *default routes are usually used to direct traffic towards the internet
   *it is a route that includes all possible ip addresses: 0.0.0.0/0
   *This is the least specific route possible
     *in routing, the router looks at its routing table and attempts to match the packets ip adderess with the most specific match it can find in its routing table
@@ -10,3 +11,13 @@
 ##CLI commands
 -R1(config)#ip route "followed by the ip address, netmask, and then the nexthop" 
  *next-hop is just the respective interface's ip address
+ *you can also replace next-hop with exit-interface or follow exit-interface with next-hop
+  *exit-interface will specify what interface to send the packet out of
+  *exit-interface next-hop will do both
+*it i just a matter of preference for which to use
+
+##Configuing a default route on a Cisco router
+*"Gateway of last resort is not set" means the default route isnt set yet
+*To configure a default route it is the same command but the ip address and the netmask should all be zeroes
+and followed by next-hop to the internet
+*"S*" - candidate to be default route
