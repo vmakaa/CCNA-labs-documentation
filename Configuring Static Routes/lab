@@ -26,7 +26,12 @@ Then I set the gateway for PC1 and PC2 by going into the settings of PC 1 and 2 
     NOTE: Remember that the gateway is essentially the PC asking "Where do I send my traffic if I want to send traffic outside my LAN?"
 and the answer would be the router in the PC's LAN
 
-(2) 
+(2) To help with task 2 I am going to create a chart that will let me visualize the next hops needed
+        ip               next hop
+R1    192.168.1.0/24          
+R2
+R2
+R3
 
 
 
