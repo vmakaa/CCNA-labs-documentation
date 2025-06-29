@@ -27,10 +27,10 @@ Then I set the gateway for PC1 and PC2 by going into the settings of PC 1 and 2 
 and the answer would be the router in the PC's LAN
 
 (2) To help with task 2 I am going to create a chart that will let me visualize the next hops needed
-        ip               next hop
-R1    192.168.1.0/24          
-R2
-R2
+        ip destination       next hop
+R1    192.168.3.0/24      192.168.12.2/24     
+R2    192.168.1.0/24      
+R2    
 R3
 
 
