@@ -6,3 +6,26 @@ All devices have NO pre-configurations:
     (You don't have to configure the switches)
 
 2. Configure static routes on the routers to enable PC1 to successfully ping PC2.
+
+##Topology
+in topology file
+
+##Lab Setup
+Packet Tracer
+
+##Tasks Performed
+(1) First I respectively set the ip addresses for PC1 and PC2 by going into their configs and accessing the interfaces connected to the switch.
+Then i set the hostnames for the routers to R1, R2, and R3 respectively by going into global config mode and using the command:
+    Router(global-config)#hostname R1
+
+Then I set the ip addresses on each of the routers interface's by entering global config interface mode and setting the ip address,
+adding a description, and using the no shutdown command. I then checked if my configurations work using do sh ip int br which verified
+that my configurations did work
+
+Then I set the gateway for PC1 and PC2 by going into the settings of PC 1 and 2 and typing in the router's ip address
+    NOTE: Remember that the gateway is essentially the PC asking "Where do I send my traffic if I want to send traffic outside my LAN?"
+and the answer would be the router in the PC's LAN
+
+(2) 
+
+    
