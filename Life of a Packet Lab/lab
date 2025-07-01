@@ -1,0 +1,71 @@
+##Objectives
+1. PC1 pings PC4.  
+Identify the src/dst MAC address at each specified point in the route to PC4.
+Identify the MAC address by the device and interface (ie. the MAC of R1 G0/0)
+A. Source/Destination MAC at PC1 → SW1 segment
+B. Source/Destination MAC at SW1 → R1 segment
+C. Source/Destination MAC at R1 → R2 segment
+D. Source/Destination MAC at R2 → R3 segment
+E. Source/Destination MAC at R3 → SW2 segment
+F. Source/Destination MAC at SW2 → PC4 segment
+
+Use the CLI and Packet Tracer's simulation mode to verify your answers.
+(Before you enter simulation mode, ping once to complete ARP/the MAC learning process.)
+
+2. PC1 pings PC3.
+Identify the src/dst MAC address at each specified point in the route to PC3.
+Identify the MAC address by the device and interface (ie. the MAC of R1 G0/0)
+A. Source/Destination MAC at PC1 → SW1
+B. Source/Destination MAC at SW1 → PC3
+
+Use the CLI and Packet Tracer's simulation mode to verify your answers.
+(Before you enter simulation mode, ping once to complete ARP/the MAC learning process.)
+
+3. PC4 pings PC1.
+Identify the src/dst MAC address at each specified point in the route to PC1.
+Identify the MAC address by the device and interface (ie. the MAC of R1 G0/0).
+
+##Topology
+in topology file
+
+##Lab Setup
+Packet Tracer
+
+##Tasks Performed
+In order to complete this lab, I analyzed the topology and determined the src and dst mac addresses and used the simulation mode in
+packet tracer to verify my answers
+
+Note:switches dont alter the src and dst mac addresses
+
+1A. Src: MAc at PC1 Dst: Mac of R1 at int g0/0   
+1B. Src: MAc at PC1 Dst: Mac of R1 at int g0/0
+1C. Src: MAC of R1 at int g0/1 Dst: MAC of R2 and int g0/0
+1D. Src: MAC of R2 at int g0/1 Dst: MAC of R3 at g0/0
+1E. Src: MAC of R3 at g0/1 Dst: PC4
+1F. Src: MAC of R3 at g0/1 Dst: PC4
+
+Checking using simulation mode in packet tracer
+1A is correct
+1B is correct
+1C is correct
+1D is correct
+1E is correct
+1F is correct
+
+2A. Src: MAC of PC1 Dst: MAC of PC3
+2B. Src: MAC of PC1 Dst: MAC of PC3
+
+2A and 2B are both correct
+
+3 is just the reverse of 1
+so you go from bottom to top in the way i ordered it in number 1
+and then for each you switch src and dst
+
+
+
+
+
+
+
+
+
