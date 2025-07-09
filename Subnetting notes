@@ -1,0 +1,90 @@
+##IpV4 Address Classes
+*Class A
+  -First bit is 0 (0xxxxxxx) in the binary of the first octet of an ip address x<-.x.x.x
+  -the range for the first octet in this class is 0-127
+  -the address range is 0.0.0.0 - 127.255.255.255
+  -/8 prefix length
+*Class B
+  -The first two bits are 1 and 0 (10xxxxxx) in the binary of the first octet
+  -the range for the first octet in this class is 128-191
+  -the address range is 128.0.0.0 - 191.255.255.255
+  -/16 prefix length
+*Class C
+  -The first 3 bits are 110 (110xxxxx) 
+  -the range for the first octet in this class is 192-223
+  -the address range is 192.0.0.0 - 223.255.255.255
+  -/24 prefix length
+*Class D
+  -The first 4 bits are 1110 (1110xxxx)
+  -the range for the first octet in this class is 224-239
+  -the address range is 224.0.0.0 - 239.255.255.255
+*Class E
+  -The first 4 bits are 1111 (1111xxxx)
+  -the range for the first octet in this class is 240-255
+  -the address range is 240.0.0.0 - 255.255.255.255
+
+Only Classes A, B, and C can be assigned as an ip address to devices, while D*multicast) and E (experimental) have special purposes
+
+BUT!!!!!!
+This led to many wasted addresses so we switched to CIDR
+
+##The switch to CIDR
+
+as you extend the network mask /28, /29, /30 etc. the number of addresses wasted gets smaller and smaller
+
+for example in /28 there are only 14 usable addresses 
+
+So for a point to point connection that just connects two routers for example you can use a /30 network mask and with the formula
+2^n-2 (number of usable addresses) we get 4-2=2 which is perfect for a point to point connection that only connects two routers leaving no
+addresses wasted
+  -but you can make this even more efficient by using a /31 network mask because for a simple point to point connection that would for example
+only connect two routers there is no need for a network address or broadcast address
+    -in cisco CLI it will even make sure to remind you that it should be a point to point link if you are using /31 network mask
+(255.255.255.254)
+
+##Subnetting trick
+Formula 2^x where x is the number of borrowed bits
+
+##Subnetting Overview
+This video is a good video that explains subnetting (8 min)
+https://pie.yt/?v=https://youtu.be/OD2vG5st4zI?si=mGmjwRwwjucFR5Xz&pieshare=1
+A key note is that the subnets build on each other
+For example you dont go to x.x.x.192 and then the next subnet starts at x.x.x.0 you have to find the increment and then increment off of
+x.x.x.192
+
+Important Distinction!:
+Network Chuck's video teaches how to create individual subnets based on host needs (VLSM)
+Jeremy's Part two video teaches you equal-sized subnetting or Fixed-Length Subnet Masking (FLSM)
+
+NOTE: Do not be afraid to look over the subnetting videos again, even experienced network engineers still have to relearn it
+
+##Why would you even want to subnet a network?
+Three reasons
+1. Security
+  -Protect internal data from external threats
+2. Organization
+  -You can take each subnet and assign it to a different portion of the company (finance, law, health, etc.)
+  -You can get security from this becuase in order for each subnet to talk to one another they neeed to go through the router 
+and the network administrator controls the router
+3. Performance
+  -smaller networks tend to be faster networks, so by isolating a huge network into smaller peices it can make the networks run faster
+
+##What is used more FLSM or VLSM?
+VLSM since if different portions of your split up network have different amounts of hosts this could lead to either not enough
+addresses or address waste
+
+##2^x borrowed bit FLSM formula
+if you borrow 2 bits you get 4 addresses 
+-x.x.x.00nnnnn
+-x.x.x.01
+-x.x.x.10
+-x.x.x.11
+
+
+
+
+
+
+
+
+
