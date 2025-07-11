@@ -1,0 +1,96 @@
+##Objectives 
+Subnet the 192.168.5.0/24 network to provide sufficient addressing for each LAN.
+(Also, the point-to-point connection between R1 and R2).
+
+Assign the first usable address to the PC in each LAN.
+
+Assign the last usable address to the router's interface in each LAN.
+
+Configure static routes on each router so that all PCs can ping eachother.
+
+##Topology
+in topology file
+
+##Lab Setup
+Packet Tracer
+
+##Tasks Performed
+LAN 2 needs to be assigned a subnet first since it requires the most users
+-hosts needed = 64
+-so we need to borrow 1 bit
+  -if we borrowed two only 62 usable addresses
+-prefix length = /25; 126 usable addresses
+-192.168.5.0 - 192.168.5.127
+  -network address - 192.168.5.0
+  -broadcast address - 192.168.5.127
+  -PC in LAN 2 IP address = 192.168.15.1
+  -Router for LAN 2 IP address = 192.168.5.126 subnet = 255.255.255.128
+
+LAN 1 is next becuase it has the most users after LAN 2
+-hosts needed = 45
+-so we need to borrow two bits
+  -64 total addresses, 62 usable addresses
+-prefix length = /26
+-192.168.5.128 - 192.168.5.191
+  -network address = 192.168.5.128
+  -broadcast address = 192.168.5.191
+  -PC in LAN 1 IP address = 192.168.5.129
+  -Router in LAN 1 IP address = 192.168.5.190 subnet = 255.255.255.192
+
+Next is LAN 3 which has 14 hosts
+-we need to borrow 4 bits
+-prefix length = /28
+-192.168.5.192 - 192.168.5.207
+-subnet = 255.255.255.240
+  -192.168.5.192 - 192.168.5.207
+  -network address = 192.168.5.192
+  -broadcast address = 192.168.5.207
+  -PC in LAN 3 IP address = 192.168.5.193
+  -LAN 3 interface to router IP address = 192.168.5.206
+
+
+Next is LAN 4 which needs 9 hosts
+- we need to borrow 4 bits 
+-prefix length = /28
+-usable addresses = 14, total addresses = 16
+-subnet = 255.255.255.240
+  -192.168.5.208 - 192.168.5.223
+  -network address = 192.168.5.208
+  -broadcast address = 192.168.5.223
+  -PC in LAN 4 IP address = 192.168.5.209
+  -LAN 4 interface to router IP address = 192.168.5.222
+
+
+Lastly is the point to point connection
+-we will want to use a /30
+-4 total addresses, 2 usable addresses
+  -192.168.5.224 - 192.168.5.227
+  -netwrok address = 192.168.5.224
+  -broadcast address = 192.168.5.227
+  -point 1 IP address = 192.168.5.225
+  -point 2 connection = 192.168.5.226
+  -subnet = 255.255.255.252
+
+
+Dont forget no shutdown on each of the interfaces!
+
+Finally lets set up the static routes so the routers may communicate with each other
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
