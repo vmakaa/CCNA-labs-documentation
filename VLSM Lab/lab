@@ -75,6 +75,17 @@ Lastly is the point to point connection
 Dont forget no shutdown on each of the interfaces!
 
 Finally lets set up the static routes so the routers may communicate with each other
+Note: Remember that static router is basically the IP addresses asking where does the router Im connected to send my traffic?
+
+##Troubleshooting
+Ping wasnt working and I realized I had not setup the default gateway (the router's IP address)
+
+I was frustrated that my static routes were not appearing in the routing tables of the router but I realized I was doing
+static routing wrong and when I corrected the technique everything worked
+
+the CORRECT way is this:
+  to reach this destination ip address with its respective subnet what is the ip addressof the interface connected to the router
+that my router has to go through in order to reach the PC I want to ping
 
 
 
