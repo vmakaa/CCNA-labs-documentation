@@ -1,0 +1,25 @@
+##VLAN summary
+VLANs help switches adhere to subnets by seperating end-hosts on the same switch into different broadcast domains
+
+Why VLANs? - network performance and security are the two big reasons
+
+VLANs are switches only
+
+##VLAN CLI
+-show vlan brief = shows the VLANs that exist on the switch and which interfaces are in each VLAN
+
+To create a VLAN on a switch:
+-you either use a range of interfaces or a single interface
+-you use the command "switchport mode access" ; this command sets those interfaces as access ports
+  -access ports belong to a single VLAN
+-and then the command "switchport access vlan <number>" ; this is the command that actually assigns the vlan to the port(s)
+  -if vlan <number> doesnt already exist the switch automatically creates it
+
+To manually create a VLAN:
+-enter config mode and then type "vlan <number>" and it will create it for you
+
+To name a VLAN:
+-enter config mode
+-type in "vlan <number>"
+-type "name <name>"
+
