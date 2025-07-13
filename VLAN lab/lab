@@ -23,11 +23,29 @@ in topology file
 Packet Tracer
 
 ##Tasks Performed
-On each PC I set up the respective IP addresses and the correct default gateway for each subnet
+(1) On each PC I set up the respective IP addresses and the correct default gateway for each subnet
 -ENGINEERING default gateway: 10.0.0.62
 -HR default gateway: 10.0.0.126
 -SALES default gateway: 10.0.0.190
 Since they all had a prefix length of /26 they all had the same subnet mask of 255.255.255.192
+
+(2) I configured one interface per VLAN by giving it the ip address of its respective default gateway and then doing no shutdown
+
+(3) For each port that was conencted to the respective port on the router I would type:
+int <interface>
+switchport mode access
+switchport acceess vlan <number>
+and that would create the vlan if it didnt already exist
+then to name them i would go to global config mode, type in the vlan i wanted to edit, and then write name <name>
+
+and then i did the same for the ports on the switch connected to each end host and I would assign each pot to the respective
+vlan using the saem commands as above
+
+(4) I tested the broadcast ping in each subnet/broadcast domain and the only places the broadcast messaeg was recieved was the port on R1
+for the respective vlan and the vlan's end hosts
+
+pings between vlans also worked as intended by the message going to the switch, then the router, then back down to the switch, and then
+to the intended end host in the seperate vlan
 
 
 ##Troubleshooting
