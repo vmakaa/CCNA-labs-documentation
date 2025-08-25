@@ -1,1 +1,54 @@
+A Trunk port is a port that can carry traffic from multiple VLANs on a single interface
+  *The difference between this and access ports is that access ports require a separate interface for each VLAN
+
+dot1q is an encapsulation method put on Ethernet frames to identify which VLAN they belong to if you are using trunk ports
+  *Trunk ports = 'tagged' ports
+  *access ports = 'untagged' ports
+
+>Inter-VLAN routing review
+  *If PC1 on VLAN 10 wants to reach PC2 on VLAN 30, PC1 must forward its traffic through VLAN 10 to the router, and then the router will
+forward the traffic to PC2 through VLAN 30.
+
+>In an Ethernet frame, there is the Ethernet header, the packet, and then the Ethernet trailer. 'dot1q' inserts its tag in the Ethernet header
+between the source MAC address and the type/length fields of the Ethernet header.
+*The tag is 4 bytes, consisting of two parts: TPID (Tag Protocol Identifier) and TCI (Tag Control Information).
+  *TPID's value is always set to 0x8100, and this indicates that the frame is tagged.
+  *TCI consists of 3 fields: PCP, DEI, and VID.
+    *PCP (Priority Code Point) is 3 bits in length and is used for CoS (Class of Service), which prioritizes important traffic in
+congested networks.
+    *DEI (Drop Eligible Indicator) is a single bit in length and is used to tell if a frame can be dropped in congested networks to ensure
+more important traffic can get through.
+    *VID (VLAN ID) most important field and is 12 bits in length. This is used for identifying what number VLAN is being used (1-4094).
+(12^2 is 4096, but the first and the last VLANS are reserved and cannot be used)
+
+>VLAN ranges
+*The range of VLANs (1-4094) is divided into two:
+  *normal VLANs (1-1005) and extended VLANs (1006-4094)
+
+>Native VLAN
+*A switch will usually have a native VLAN on VLAN 1
+*A native VLAN will not tag any frames, so it still follows the rules of a trunk port, but devices sending information from VLAN 1 will
+have their traffic forwarded to other devices in VLAN 1.
+*It is important to have switches' native VLANs match, or there could be instances where switches will drop frames because the incoming
+native VLAN traffic could not match the receiving switch's native VLAN, and the switch will drop the frame since the frame is untagged
+but the traffic belongs in a different native VLAN than its own so it cant do anything with the frame.
+
+>configuring trunkports
+*On a switch access the port you want as a trunkport in global config mode and type the following command: 'switchport mode trunk'
+  *if the command is rejected you need to chnage the encapsulation mode from auto to dot1q using 'switchport trunk encapsulation dot1q'
+and then type the first command again
+*'show interfaces trunk' is a brief of the trunk ports
+*For security purposes you may want to limit what VLANs are allowed on what trunk ports
+  *When limiting you have access to several commands: all, none, except, WORD, add, remove; and to use them you use this format:
+"switchport trunk allowed vlan 'choice of command' 'vlan number'"
+*
+
+
+
+
+
+
+
+
+
 
