@@ -41,7 +41,20 @@ and then type the first command again
 *For security purposes you may want to limit what VLANs are allowed on what trunk ports
   *When limiting you have access to several commands: all, none, except, WORD, add, remove; and to use them you use this format:
 "switchport trunk allowed vlan 'choice of command' 'vlan number'"
-*
+
+>Router on a Stick (ROAS) means that the router is connected to the trunk port of a switch via a single interface, and that single
+interface can perform inter-vlan routing.
+ *So to make this work so the router can perform inter-vlan routing you need subinterfaces. For example, if you had one
+physical interface like G0/0 and VLANs 10, 20, and 30, the subinterfaces could be G0/0.10, G0/0.20, and G0/0.30.
+
+
+>Configuring subinterfaces
+*In order to configure subinterfaces on routers you must first in global config mode type the command 'interface g0/"#"'
+*Once you type that it will bring you to global-subif where then you type "encapsulation dot1q 'vlan #'" so that the router
+treats that subinterface as an interface carrying only vlan 10 traffic
+*Finally, you must assign the last usable IP address in the respective subnet to that subinterface
+*The subinterfaces will show up if you use the "show ip interface brief" command and will also show up in the "show ip route command"
+of a router as Connected routes
 
 
 
