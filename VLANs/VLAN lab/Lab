@@ -1,0 +1,42 @@
+#Objectives
+1. Configure the switch interfaces connected to PCs as access ports in the correct VLAN.
+
+2. Configure the connection between SW1 and SW2 as a trunk, allowing only the necessary VLANs.
+    Configure an unused VLAN as the native VLAN.
+    **Make sure all necessary VLANs exist on each switch**
+
+3. Configure the connection between SW2 and R1 using 'router on a stick'.
+     Assign the last usable address of each subnet to R1's subinterfaces.
+
+4. Test connectivity by pinging between PCs.  All PCs should be able to reach each other.
+
+#Lab Setup
+Packet Tracer
+
+#Tasks Performed
+1. For this task, I went into global config mode, then typed in the name of each interface to enter config-if mode, and for each, I typed
+"switchport mode access"
+
+2. For this step, I took each interface and wrote the command "switchport access vlan <number>" 
+(The VLAN number came from the respective PC groupings seen in the topology) to create the VLANs. Then, for the trunk port, I used the
+command "switchport mode trunk" for the point-to-point connection between SW1 and SW2, and then on
+each respective interface, I did "switchport trunk allowed vlan <number>,<number>". On switch 2 I had to create vlan 30 on the switch
+using "vlan 30" because we allowed the traffic from VLAN 30 on that trunk port, but vlan 30 didn't exist on SW2, I left VLAN 1 
+as the native VLAN.
+
+*NOTE*: You do not need to allow VLAN 20 on the trunk port because, due to the topology, the trunk port would never carry vlan 20 traffic.
+
+*NOTE*: Why you needed to create vlan 30 on switch 2:
+A switch won’t forward or process VLAN traffic that it doesn’t know about.
+
+If VLAN X isn’t created on the receiving switch, the switch sees that VLAN tag as “unknown” and just drops the frames.
+
+Creating VLAN X on the receiving switch tells it: “Yes, this VLAN exists in my VLAN database, I can forward frames for it.”
+
+
+
+3. I allowed all three VLANs on int g0/2 (the one leading to the router). Then for example I will use vlan 10 but the steps apply for all
+3, I typed "int g0/0.10" to access that subinterface and then typed "encapsulation dot1q 10", and then finally set the last usable ip
+address of vlan 30 to it.
+
+4. All pcs ping each other.
