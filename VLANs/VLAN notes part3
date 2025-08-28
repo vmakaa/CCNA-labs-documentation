@@ -1,1 +1,61 @@
+>Using Native Vlan on a router (ROAS)
+*encapsulation dot1q <vlan id> native 
+
+>Layer 3 switch (Multilayer switch)
+*What is a multilayer switch? - A switch that is capable of both switching and routing
+*It is layer 3 'aware' 
+  *Remember that a regular layer 2 switch does not even know about IP addresses
+*You can use it for static routes
+*You can use it for inter-VLAN routing
+
+>MLS inter-VLAN routing using Switch Virtual Interfaces (SVI)
+*SVIs are the virtual interfaces in a multilayer switch that you can assign IP addresses to
+  *You would configure each PC to use the MLS as their gateway address, not the router
+*For a multilayer switch to send traffic outside of its LAN, there must be a point-to-point connection with IP addresses between the MLS and the Router. You must then set a default route for the MLS
+to forward its traffic to the router, which can then forward the traffic outside the LAN.
+
+>Configuring a default route for a point to point between a router and a MLS
+*First delete all subinterfaces
+*Then set the interface connected to the switch to its default settings using the command "default interface <int name>"
+*Then on the router's side give that interface one of the IP addresses in your /30 subnet
+  *Remember /30 allows for 2 usable IP addresses
+
+*Then, for the MLS, you must first also set the Switch's point to point interface to its default settings 
+***Then use the command "ip routing"
+  *This command enables layer 3 routing, lets it form its own routing table
+*Then type the command "no switchport"
+  *This changes the port from a layer 2 switchport to a layer 3 routed port
+*Then assign the other usable IP address from your /30 subnet to the MLS's port
+
+*Finally, you need to set up the default route from the MLS to the router
+*To do this, input the command "ip route 0.0.0.0 0.0.0.0 <next hop>"
+  *In this case, the next hop is the IP address of the router
+*Commands to confirm the status: "do show ip route" & "do show interfaces status"
+
+
+>Configuring SVIs
+*"interface <vlan + number>"
+*set the ip address
+*"no shutdown"
+*Then do that for every vlan you need
+
+>Conditions an SVI needs to be "UP/UP" on a switch
+*The VLAN must exist on the switch
+  *if you create accessport for a vlan on a switch the switch will automatically create the vlan but a MLS will not automatically create a VLAN for an SVI
+*The second condition is that the switch must be connected to the VLAN and/or there must be a trunkport connected to the switch that carries the VLAN's traffic
+*The third condition is that the VLAN must not be shutdown
+  *You can use the shutdown command on VLANs
+*The fourth condition is that the SVI itself must not be shutdown
+  *SVIs are shutdown by default
+
+
+
+
+
+
+
+
+
+
+
 
