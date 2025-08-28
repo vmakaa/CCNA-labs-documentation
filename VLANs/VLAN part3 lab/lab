@@ -1,1 +1,33 @@
+#Objectives
+All devices are preconfigured from the end of Day 17's lab (SW2 has been replaced with a multilayer switch):
+Hosts are in the correct VLANs.
+SW1-SW2 are connected via trunk.
+R1-SW2 are connected via ROAS.
 
+1. Replace the ROAS configuration on R1-SW2 with a point-to-point Layer 3 connection.
+    Use the IP addresses given in the network diagram.
+    Configure a default route on SW2, with R1's G0/0 interface as the next hop.
+
+2. Configure SVIs on SW2, one for each VLAN.
+     Assign the last usable IP address of each subnet to the appropriate SVI.
+
+3. Test inter-VLAN connectivity by pinging between VLANs.
+
+4. Test connectivity to the Internet by pinging 1.1.1.1
+    (Routes have already been configured on R1 and the Internet router)
+
+#Lab Setup
+Packet Tracer
+
+#Tasks Performed
+1. For the first task, I deleted g0/0.10, g0/0.20, & g0/0.30. Then I set g0/0 on the router to its default settings using "default interface g0/0." Then I assigned the router the ip address and subnet mask
+of 10.0.0.194 255.255.255.252. I then configured SW2's G1/0/2 port for routing by using the commands "ip routing" (enables layer 3 routing" and "no switchport" (switches the port from a layer 2 accessport to
+a layer 3 'routed port'). Finally I assigned the interface for SW2 the last usable IP address of 10.0.0.193 255.255.255.252. I finally set up the default route between SW2 and R1 by using the command
+"ip route 0.0.0.0 0.0.0.0 10.0.0.194" and set all the PCs default gateway address to SW2.
+
+2. For this task, I configure an SVI for each VLAN. To do this, for each VLAN, I input the commands (example VLAN10) "interface vlan10", "ip address <last usable ip address of vlan10's subnet>", & finally
+"no shutdown."
+
+3. Connectivity confirmed.
+
+4. Connectivity to the internet confirmed.
