@@ -35,7 +35,7 @@ to forward its traffic to the router, which can then forward the traffic outside
 
 >Configuring SVIs
 *"interface <vlan + number>"
-*set the ip address
+*set the ip address (last usable address for the subnet of the VLAN)
 *"no shutdown"
 *Then do that for every vlan you need
 
