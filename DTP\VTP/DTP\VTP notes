@@ -1,0 +1,22 @@
+>What is DTP?
+*When the switch dynamically assigns a port to be an accessport or a trunk port
+
+>Configuring DTP
+*"switchport mode dynamic <desirable or auto>"
+  *Desirable will form a trunk connection to a switch with any of the following: "switchport mode <trunk, dynamic desirable, or dynamic auto>"
+    *Note if the other interface is in access mode they will both be access ports
+  *Auto will not actively try and form a trunk connection, but if the connected switch is actively trying to form a trunk connection then auto will form a trunk connection.
+*NOTE: it is better to not have DTP enabled and you can disable it using the command "switchport nonegotiate"
+
+>What is VTP?
+*it is not recommended to use VTP
+*A central switch server with a vlan database and all other switches sync up to that database and get the information about the vlans
+*VTP v1 and v2 do not support the extended vlan range
+*Three different VTP modes
+  *Server: can modify/add/delete vlans; store the vlan database in non volatile ram which means that the database is saved even if the switch is turned off
+    *Every time a vlan is added/modified/deleted the revision number goes up and the switch server with the highest revision number is the database that all other switches (including other servers) will sync to
+  *Clients: Cannot modify/add/delete vlans; database is not stored in nvram
+    *They will sync their vlan database to the server with the highest revision number in their VTP domain
+  *Transparent: Does not sync its database with others, maintains its own in nvram; can add modify or delete vlans but it doesnt get advertised to other switches, but it will forward other advertisements
+    *advertised means that the option to sync to the switch will not travel to other switches
+*Changing the domain name or setting a switch to transparent will reset the revision number
