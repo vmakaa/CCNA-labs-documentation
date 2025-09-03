@@ -19,4 +19,5 @@
     *They will sync their vlan database to the server with the highest revision number in their VTP domain
   *Transparent: Does not sync its database with others, maintains its own in nvram; can add modify or delete vlans but it doesnt get advertised to other switches, but it will forward other advertisements
     *advertised means that the option to sync to the switch will not travel to other switches
+    *"vtp mode transparent"
 *Changing the domain name or setting a switch to transparent will reset the revision number
