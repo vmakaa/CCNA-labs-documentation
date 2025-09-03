@@ -40,6 +40,9 @@
        *What is port ID? STP port ID is port priority (default 128) + port number (usually a single digit)
            *You can find this using the command "show spanning-tree"
   *A root port must be connected to a designated switch
+*Step 3 is when each remaining collision domain (a line in the topology) will select ONE interface to be a designated port (forwarding state). The other port in the collision domain will be
+non-designated (blocking).
+ *You break ties the same way as in step 2.
 
 >PVST
 *Different VLANs have different instances of STP
