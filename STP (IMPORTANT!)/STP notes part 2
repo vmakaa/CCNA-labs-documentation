@@ -1,1 +1,15 @@
+>Spanning Tree Port Status
+*There are 4 STP port statuses
+  *blocking, forwarding, listening, and learning
+*Root/designated ports remain stable in a forwarding state, while non-designated ports remain stable in a blocking state
 
+*Only designated or root ports can enter the listening state
+  *The listening state is 15 seconds long due to a timer called the Forward Delay timer
+  *An interface in the Listening state only forwards/receives STP BPDUs, does not send/receive regular traffic, and cannot learn MAC addresses
+  *nondesignated ports are always blocking
+
+*After the listening state is the learning state
+  *The learning state is 15 seconds long and is also determined by the forward delay timer
+  *An interface in the learning state only sends/receives STP BPDUs, does not send/receive regular traffic, but it DOES learn MAC addresses from regular traffic, although it doesn't forward the traffic
+    *"learning" the MAC address tablee
+  *
