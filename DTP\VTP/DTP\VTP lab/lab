@@ -1,1 +1,37 @@
+#Objectives
+1. Configure the switchports connecting switches as trunk ports.
+    Disable DTP on the ports.
+    Confirm the administrative and operational mode of each interface.
+
+2. Configure SW1 in VTP domain CCNA.
+    Create VLANs 10, 20, and 30 on SW1.
+    Have SW2 and SW3 added VLANs 10, 20, and 30?
+
+3. Configure SW2 in VTP transparent mode.
+    Add VLAN40 to SW2.
+    Is VLAN40 added to the VLAN database of SW1/SW3?
+
+4. Configure SW3 in VTP client mode.
+    Try to configure VLAN50 on SW3.  Is it added?
+
+5. Configure all switchports connected to hosts in the correct VLAN.
+    Manually configure them as access ports.
+    Is DTP still enabled on the switchports?
+
+#Lab Setup
+Packet Tracer
+
+#Tasks Performed
+1. For each interface connecting switches, I input the command "switchport mode trunk" and "switchport nonegotiate." I used "do sh ip int br" to check the statuses and switchports needed for
+trunking are all "up, up"
+
+2. I used the command "VTP domain CCNA" on SW1. On all three switches I the created the vlans by typing "vlan <vlan_id>"
+
+3. I used "vtp mode transparent" to put SW2 into VTP transparent mode. VLAN 40 was not added to SW1 and 2's databases because it is in transparent mode.
+
+4. I used "vtp mode client" to put SW3 into VTP client mode. VLAN 50 was not added because clients cannot modify/add/delete VLANS.
+
+5. For each interface connected to an end host I typed "switchport mode access" and the "switchport access vlan <corresponding vlan id>." DTP is not enabled on these switchports because DTP will not try to
+make trunking connections with access ports.
+  *They say "static access" in Administrative mode instead of "Dynamic <desirable or auto>."
 
