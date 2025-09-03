@@ -36,6 +36,9 @@
     *10 gbps = 2 STP cost
   *Root cost is the total cost of the outgoing interfaces along the path to the root bridge
    *If root cost is the same neighbor with the lowest bridge ID will be selected
+     *If another tiebreaker is needed then we need the lowest neighbor port ID
+       *What is port ID? STP port ID is port priority (default 128) + port number (usually a single digit)
+           *You can find this using the command "show spanning-tree"
   *A root port must be connected to a designated switch
 
 >PVST
