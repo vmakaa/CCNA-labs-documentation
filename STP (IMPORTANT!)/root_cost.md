@@ -12,3 +12,7 @@ your local switch's root port depending on if the neighbor's port is lower in po
 
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d4b29841-156f-4827-9814-7c30273b5894" />
+
+non designated port choosing the non designated ports are chosen based on root cost (total path from root switch to port in question)
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/923efdc6-7c73-4d3c-9532-86d93816ff50" />
