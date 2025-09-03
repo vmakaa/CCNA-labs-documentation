@@ -1,0 +1,41 @@
+>A network without redundancy is not acceptable
+*As a network engineer, you need redundancy in any network you create
+*Even a small downtime can be disastrous
+*This is why you need to make sure other network components will take over if one fails
+*It is good practice to implement redundancy wherever possible
+
+>Broadcast storms
+*There are certain switch layouts that, when broadcast frames are sent, the switches will send each other the broadcast frames forever. This prevents legitimate traffic from using the network
+  *Solution to this problem? - (classic) STP
+
+>(Classic) Spanning Tree Protocol (STP)
+*Classic STP is IEEE 802.1D
+*STP prevents layer 2 loops by placing redundant ports in a blocking state, essentially disabling the interface
+  *Interfaces in a blocking state only send and recieve STP messages (BPDUs = Bridge Protocol Data Units)
+    *"bridge" = Switch
+*By selecting which ports are in a forwarding state and which are in a blocking state, STP creates a single path to/from each point in the network. This prevents layer 2 loops.
+
+>Hello BPDUs
+*Hello BPDUs are sent by switches for switches so they can learn about each other
+*Switches use the Bridge ID field on the BPDU to elect a root bridge. All ports on the root bridge are put in a forwarding state and all paths must be able to reach the root bridge.
+  *Switch with the lowest Bridge ID is the root bridge
+    *Since the default bridge priority is 32768 the lowest MAC address is used as a tie breaker
+  *But ths changed with the addition into vlans into bridge priority field where extended vlan id is 12 bits and the rets is the bridge priority
+  *STP bridge priority can only be changed in units of 4096 since teh vlan numbers are fixed according to hwat vlan you are in
+  *Bridge ID has two fields: Bridge Priority (16 bits) and MAC address (48 bits)
+
+>STP cont
+*All ports on the root bridge are in a designated state which means all ports are in a forwarding state
+*When switches are powered on they think that tehy are the root bridge and they all send BPDUs to each other and then they elect the real root bridge and then only the root bridge will send BPDUs
+  *This is step one in the STP process
+*Step 2 is when each remain switch selectes one of their interfaces to be the root port. The interface with the lowest root cost will be the root port. Root ports are in a designated state (forwarding).
+  *these are the path costs for each interface type (memorize):
+    *10 mbps = 100 STP cost
+    *100 mbps = 19 STP cost
+    *1 gbps = 4 STP cost
+    *10 gbps = 2 STP cost
+  *Root cost is the total cost of the outgoing interfaces along the path to the root bridge
+
+>PVST
+*Different VLANs have different instances of STP
+
