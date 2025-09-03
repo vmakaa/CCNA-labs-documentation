@@ -1,1 +1,21 @@
+The root bridge is SW3 because it has the lowest priority
+
+All of SW3's ports are designated ports (forwarding state).
+
+SW4:
+  *SW4's g0/2 interface is the root port because it's a single interface directly connected to the root bridge
+  *SW4's g0/1 is a designated port because the switch needs one
+
+SW2:
+  *SW2's g0/1 port is the root port and not F0/3 because fast ethernet's root cost is 19 and gigabit's root cost is 4. 
+    *So the single interface connecting SW2 and the root bridge costs 19 in terms of root cost where as the path to SW4 then SW2 only costs 8
+because gigabit's root cost is only 4.
+  *SW2's F0/3 port is non-designated because it's one of the remaining collision domains after all root ports and designated ports were assigned
+  *SW2's F0/1-2 ports are designated because they are two of  the remaining collision domains after everything was assigned and the root cost is lower to get to SW2 then it is to get to SW1
+
+SW1:
+  *SW1's F0/1-2 ports are non designated because they did not get the designated port as part of the two remaining collision domains
+  *SW1's F0/4 port is the root port becuase it has a lower root cost (comparing SW3's port to which has a lower cost) than F0/3.
+  *SW1's F0/3 port is a non designated port becuase every root port and designated port were already assigned, so the opposite of a designated port after assigning
+is a non-designated port.
 
