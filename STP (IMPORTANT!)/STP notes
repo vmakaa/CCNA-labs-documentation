@@ -35,6 +35,8 @@
     *1 gbps = 4 STP cost
     *10 gbps = 2 STP cost
   *Root cost is the total cost of the outgoing interfaces along the path to the root bridge
+   *If root cost is the same neighbor with the lowest bridge ID will be selected
+  *A root port must be connected to a designated switch
 
 >PVST
 *Different VLANs have different instances of STP
