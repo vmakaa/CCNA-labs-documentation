@@ -11,5 +11,66 @@
 *After the listening state is the learning state
   *The learning state is 15 seconds long and is also determined by the forward delay timer
   *An interface in the learning state only sends/receives STP BPDUs, does not send/receive regular traffic, but it DOES learn MAC addresses from regular traffic, although it doesn't forward the traffic
-    *"learning" the MAC address tablee
-  *
+    *"learning" the MAC address table
+
+
+>Spanning Tree Timers
+*Three different timers:
+ *Hello (2 seconds)
+  *purpose: how often the root bridge sends Hello BPDUs
+ *Forward Delay (15 seconds)
+  *purpose: How long the switch will stay in the Listening and Learning states (15 seconds each)
+ *Max Age (20 seconds [10*Hello])
+  *purpose: How long an interface will wait after ceasing to receive Hello BPDUs to change the STP topology.
+   *A switch will have a 20 second timer and every time a hello BPDU is received the timer resets to 20 but if a BPDU is not received and the timer goes to 0 then the switch will reevaluate its port choices
+
+Reminder: Only root bridge sends Hello BPDUs and then only designated ports will forward them
+
+>Spanning Tree BPDU
+*Regular STP uses a destination MAC address of 0180.c200.0000
+
+>Spanning Tree Optional Features (STP Toolkit)
+*Portfast
+ *can be enabled on interfaces connected to endhosts
+ *Allows ports connected to end hosts to skip the listening and learning states and go straight to forwarding
+  *No risk of layer two loops as it is only between switch and end host
+ *Portfast is enabled at the interface level using the command "spanning-tree portfast"
+*BPDU Guard
+ *if an interface with BPDU Guard enabled receives a BPDU from another switch, the interface will be shut down to prevent a loop from forming.
+ *BPDU Guard is enabled at the interface level using the command "spanning-tree bpduguard enable"
+
+>Spanning Tree Configs
+*How to set up primary and secondary root bridge
+ *Primary:
+  *"spanning-tree vlan <vlanid> root primary"
+ *Secondary:
+  *"spanning-tree vlan <vlanid> root secondary"
+
+>STP load-balancing
+*The idea is that in different vlans one interface could be up and another could be down in a differetn vlan
+*Different connections in different vlans
+
+>Configure STP port settings
+*"spanning-tree vlan <vlanid> <cost or port-id> <cost up to 20 mil or change port id>"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
