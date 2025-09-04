@@ -51,7 +51,7 @@ Reminder: Only root bridge sends Hello BPDUs and then only designated ports will
 *Different connections in different vlans
 
 >Configure STP port settings
-*"spanning-tree vlan <vlanid> <cost or port-id> <cost up to 20 mil or change port id>"
+*"spanning-tree vlan <vlanid> <cost or port-priority> <cost up to 20 mil or change port id>"
 
 
 
