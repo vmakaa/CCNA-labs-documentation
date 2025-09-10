@@ -1,0 +1,31 @@
+>Rapid Spanning Tree Protocol (RSTP)
+*Cisco Summary: "heart of the protocol is a new bridge-to-bridge handshake mechanism, which allows ports to move directly to forwarding"
+*RSTP still elects root bridge, root ports, and designated ports with the same rules that STP uses
+*RSTP updated the root cost chart:
+  *10 mbps = 2,000,000
+  *100 mbps = 200,000
+  *1 gbps = 20,000
+  *10 gbps = 2,000
+*In RSTP, blocking and Disabled are combined into the discarded state, and the listening state is not used anymore
+*Root port and designated port stayed the same, but the non-designated port is split into two separate roles in RSTP:
+  *alternate port role
+    *acts as a backup to the root port in case it fails it will go to its forwarding state and act as the root port
+  *backup port role
+    *not used in modern networks as it is used for hubs
+
+>RSTP BPDU
+*Protocol Version Identifier in BPDU
+  *In classic STP the identifier is 0 whereas in RSTP the identifier is 2
+*RSTP BPDU uses all 8 bits in the BPDU flags, whereas STP BPDU uses only the first and the last bit
+*One major difference, in STP only the root bridge sent BPDUs and the other switches just forwarded them, in RSTP all switches send their own BPDUs from their designated ports
+  *In classic STP BPDU switches will wait 20 seconds (10 hello timers), in RSTP a switch considers its neighbor lost if it misses 3 BPDUs (6 seconds). It will then flush all (delete) all MAC addresses learned on that interface.
+
+>RSTP link types
+*RSTP distinguishes between 3 different link types:
+  *Edge: A port that is connected to an end host. Moves directly to forwarding, without negotiation.
+    *Edge and portfast are the same thing, even the same config.
+  *Point-to-point: direct connections between switches.
+  *Shared: A connection to a hub. Must operate in half-duplex mode to avoid collisions.
+*These all are really to distinguish when to use portfast, full duplex, and half-duplex.
+
+Review: How to pick alternate vs backup ports
