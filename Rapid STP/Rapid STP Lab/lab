@@ -1,1 +1,25 @@
+#Objectives
+1. Which switch is the root bridge?
+    Use the CLI to examine the port role/state of each interface on the root.
+    What appears different than what you have learned about the root bridge?
+    What is the cause of this?
 
+2. Without using the CLI, determine the port role/state of each remaining switch interface.
+    Use the CLI to confirm.
+
+3. Manually configure the appropriate RSTP link type on each interface.
+    What do you think is the correct link type for SW1's F0/24?
+
+#Lab Setup
+Packet Tracer
+
+#Tasks Performed
+1. SW1 is the root bridge. Root bridges are supposed to have all their ports be forwarding, but there is one backup port. This is becuase two interfaces are connected to a hub, and there is a rule that there can only be one designated port in a 
+collision domain.
+
+2. Skip, Jeremy mentions that there is a error in the lab becuases of the hubs that causes the port statuses to switch. If you want practice determine the root port of each switch.
+
+3. For SW3, F0/24 was an edge port which was configured via the command "span portfast." F0/1 is a ptp connection so it is configured using the command "span link point" and then F0/2 is con nected to a hub so the command is "span link shared"
+For SW2, F0/1-2 and G0/1 were p2p and f0/23-24 were portf
+For SW4, F0/1-2 were p2p and f0/24 was portf
+For SW1, F0/2-3 were shared and F0/1 was a p2p and I think f0/24 is a shared port as well as an edge port, the spanning tree acts as if the hub isnt there and is connected directly to the PCs.
