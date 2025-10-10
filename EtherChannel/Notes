@@ -1,0 +1,50 @@
+>What is EtherChannel?
+*EtherChannel is a way to add redundancy to a network topology
+*An EtherChannel can group multiple physical links into one logical link
+  *STP will also treat this group as a single interface (which means the extra ports wont be disabled)
+*EtherChannnel Alternate names include:
+  *Port Channel
+  *LAG (Link Aggregation Group)
+
+>How does EtherChannel Load Balance?
+*Based on flows
+  *A "flow" is a communication between two nodes in the network
+  *Frames in the same flow will be forwarded using the same physical interface
+    *If frames in the same flow were forwarded using different physical interfaces, some frames may arrive at the destination out of order which
+could cause problems.
+*Command to see curretn etherchannel load balance is "show etherchannel load-balance"
+*Command to change load-balance method is "port channel load-balance [method]"
+  *"port channel load-balance ?" to see different [methods]
+
+>EtherChannel Configuration
+*Three methods of etherchannle configuration on cisco switches:
+      *PAgP (Port Aggregation Protocol)
+        *Cisco protocol (only cisco switches)
+        *Dynamically negotiates the creation/maintenance of the EtherChannel (Like DTP does for trunks). 
+      *LACP (Link Aggregation Control Protocol)
+        *Industry Standard Protocol (IEE 801.23ad)
+          *Dynamically negotiates the creation/maintenance of the EtherChannel (Like DTP does for trunks). 
+          *Preferred EtherChannel method as it is universal
+      *Static EtherChannel
+        *A protocol isnt used to determine if an EtherChannel should be formed.
+        *Interfaces are statically configured to form an EtherChannel.
+*Up to 8 interfaces can be formed into a single EtherChannel
+    *LACP allows up to 16, but only 8 will be active, the other 8 will be in standby mode, waiting for an active interface to fail.
+*Select interfaces, uses command "channel-group [number] mode [mode]" 
+*Physical interfaces must have matching configurations including: same duplex, same speed, same switchportmode (trunk/access), if it is a trunkport it needs the 
+same allowed VLANS
+  *If an interface's configs do not match the others. it will be excluded from the EtherChannel
+  *"show etherchannel summary" to check
+
+>Layer 3 EtherChannel
+*Before continuing as normal for configuring EtherChannel after you select the interfaces you must use the command "no switchport" to enable
+layer 3 switches
+
+
+
+
+
+
+
+
+
